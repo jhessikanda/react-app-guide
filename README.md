@@ -20,6 +20,8 @@ use: [
     },
   },
 ```
+
+Other commands:
 ```
   rm -rf node_modules
   rm package-lock.json
