@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   state = {
@@ -42,7 +43,7 @@ class App extends Component {
     };
 
     // const person = Object.assign({}, this.state.persons[personIndex]);
-    
+
     personUpdated.name = event.target.value;
 
     const persons = [...this.state.persons];
@@ -57,28 +58,20 @@ class App extends Component {
   }
 
   render() {
-    // const style ={
-    //     backgroundColor: 'green',
-    //     color: 'white',
-    //     font: 'inherit',
-    //     border: '1px solid blue',
-    //     padding: '8px',
-    //     cursor: 'pointer'
-    // };
-
     let persons = null;
     let btnClass = '';
 
-    if (this.state.showPersons) { 
+    if (this.state.showPersons) {
       persons = ( <div>
                   {this.state.persons.map((person, index) => {
-                      return <Person 
-                              click={() => this.deletePersonHandler(index)}
-                              name={person.name} 
-                              age={person.age}
-                              key={person.id}
-                              changed={(event) => this.nameChangeHandler(event, person.id)}/>
-
+                      return <ErrorBoundary key={person.id}>
+                                <Person
+                                  click={() => this.deletePersonHandler(index)}
+                                  name={person.name}
+                                  age={person.age}
+                                  key={person.id}
+                                  changed={(event) => this.nameChangeHandler(event, person.id)}/>
+                            </ErrorBoundary>
                   })}
                   </div>
                 );
@@ -87,17 +80,17 @@ class App extends Component {
     }
 
     // let classes = ['red', 'bold'].join(' ');
-    
+
     const assignedClasses = [];
-    
+
     if (this.state.persons.length <= 2) {
       assignedClasses.push(classes.red); // classes = ['red']
     }
 
     if (this.state.persons.length <= 1) {
       assignedClasses.push(classes.bold); // classes = ['red', 'bold']
-    }    
-    
+    }
+
     return (
       <div className={classes.App}>
           <h1>Hiiiiii!!! </h1>
@@ -108,7 +101,7 @@ class App extends Component {
           </button>
           {persons}
       </div>
-      
+
 
       );
       // return React.createElement('div', {className: 'App'}, React.createElement('h1', null , 'Does this work now??'));
