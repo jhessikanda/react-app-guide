@@ -4,11 +4,17 @@ import classes from './App.css';
 // import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import Aux from '../hoc/Aux';
+import withClass from '../hoc/withClass';
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
     console.log('App.js inside constructor', props);
+
+    // const React = require('react');
+    // console.log(React.version);
+
     this.state = {
       persons : [
         { id:'abc1', name : "Rita", age : 25},
@@ -91,7 +97,7 @@ class App extends PureComponent {
       }
 
     return (
-      <div className={classes.App}>
+      <Aux>
         <button onClick={() => {this.setState({showPersons: true})}}>Show Persons</button>
         <Cockpit
             appTitle={this.props.title}
@@ -99,9 +105,9 @@ class App extends PureComponent {
             showPersons={this.state.showPersons}
             clicked={this.togglePersonsHandler} />
         {persons}
-      </div>
+      </Aux>
       );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
