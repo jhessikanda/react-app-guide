@@ -1,4 +1,4 @@
-## Commands
+# Commands
 
 Unlock CSS module feature.
 
@@ -33,6 +33,12 @@ Other commands:
   $ cp -a bug-test bug-test-copy
   $ cd bug-test-copy
   $ npm start   
+```
+
+## Validating props
+
+```
+  npm install --save prop-types
 ```
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

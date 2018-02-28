@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react';
 import classes from './App.css';
-// import Person from '../components/Persons/Person/Person';
-// import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Aux from '../hoc/Aux';
